@@ -1,0 +1,258 @@
+-- spool 설정
+spool c:\temp\db02_14.txt
+
+--desc (테이블명) >>> 테이블의 내용을 확인할 수 있다.  ★ desc ★
+
+--확인
+select table_name, constraint_name, constraint_type
+from user_constraints;
+where table_name in ('BOOK', 'ORDERS' );
+
+desc
+
+-- table 삭제
+drop table 테이름
+drop table 테이름 cascade constraints;
+
+drop table orders;
+
+-- insert into newbook
+CREATE TABLE NewBook (
+bookname   VARCHAR2(20),
+publisher    VARCHAR2(20),
+price          NUMBER,
+PRIMARY KEY (bookname, publisher));
+
+
+CREATE TABLE NewBook2 (
+bookname   VARCHAR2(20)      NOT NULL,
+publisher    VARCHAR2(20)        UNIQUE,
+price          NUMBER               DEFAULT 10000 CHECK(price > 1000),
+PRIMARY KEY (bookname, publisher));
+
+insert into newbook2 values('abc', 'def', 1000);
+insert into newbook2(bookname, publisher) values('ab', 'de');
+
+select * from newbook2;
+
+select table_name, constraint_name, constraint_type
+from user_constraints;
+
+--newcustomer 만들기
+create table newcustomer (
+custid    NUMBER     PRIMARY KEY,
+name     VARCHAR2(40),
+address   VARCHAR2(40),
+phone    VARCHAR2(30) );
+
+--neworders 만들기
+create table NewOrders (
+orderid     NUMBER,
+custid       NUMBER        NOT NULL,
+bookid      NUMBER       NOT NULL,
+saleprice    NUMBER,
+orderdate    DATE,
+PRIMARY KEY (orderid),
+FOREIGN KEY (custid) REFERENCES NewCustomer(custid) );
+
+
+--테이블 만들기 예시
+create table test (
+id number constraint pk_test primary key,
+bookid varchar2(10),
+constraint fk_book foreign key(bookid) references dept(bookid) );
+
+--neworders2 만들기
+create table NewOrders2 (
+orderid     NUMBER constraint pk_neworders primary key,
+custid       NUMBER        NOT NULL,
+bookid      NUMBER       NOT NULL,
+saleprice    NUMBER,
+orderdate    DATE,
+constraint fk_newcustomer FOREIGN KEY (custid) REFERENCES NewCustomer(custid) );
+
+--제약사항 검색
+select table_name, constraint_name, constraint_type
+from user_constraints
+where table_name in ('  ' , '    ');
+
+--3-37 newbook 테이블에 varchar2(13)의 자료형을 가진 isbn 속성을 추가하시오.
+ALTER TABLE NewBook ADD isbn VARCHAR2(13);
+
+--3-38 newbook 테이블의 isbn 속성의 데이터 타입을 number형으로 변경하시오.
+ALTER TABLE NewBook MODIFY isbn NUMBER;
+
+--3-39 newbook 테이블의 isbn 속성을 삭제하시오.
+ALTER TABLE NewBook DROP COLUMN isbn;
+
+--3-40 newbook 테이블의 bookid 속성에 NOT NULL 제약조건을 적용하시오.
+ALTER TABLE NewBook MODIFY bookid NUMBER NOT NULL;
+
+--3-41 newbook 테이블의 bookid 속성을 기본키로 변경하시오.
+ALTER TABLE NewBook ADD PRIMARY KEY(bookid);
+
+drop table newbook;
+
+--새롭게 newbook 만들기
+CREATE TABLE NewBook (
+bookid      NUMBER,
+bookname   VARCHAR2(20),
+publisher    VARCHAR2(20),
+price          NUMBER);
+
+--3-42 newbook 테이블을 삭제하시오,
+drop table newbook;
+
+--3-43 newcustomer 테이블을 삭제하시오. 만약 삭제가 거절된다면 원인을 파악하고 관련된 
+테이블을 같이 삭제하시오(neworders 테이블이 newcustomer를 참조하고 있음)
+drop table newcustomer;
+ex) drop table 테이름 cascade constraints;
+
+--Imported book 생성
+CREATE TABLE Imported_Book (
+  bookid      NUMBER ,
+  bookname    VARCHAR(40),
+  publisher   VARCHAR(40),
+  price       NUMBER(8) 
+);
+INSERT INTO Imported_Book VALUES(21, 'Zen Golf', 'Pearson', 12000);
+INSERT INTO Imported_Book VALUES(22, 'Soccer Skills', 'Human Kinetics', 
+  15000);
+
+--3-46 수입도서 목록(Imported_book)을 Book 테이블에 모두 삽입하시오,
+INSERT INTO Book(bookid, bookname, price, publisher)
+          SELECT bookid, bookname, price, publisher
+          FROM Imported_book;
+
+--3-47 customer 테이블에서 고객번호가 5인 고객의 주소를 '대한민국 부산'으로 변경하시오.
+update customer
+set address='대한민국 부산'
+where custid=5;
+
+--3-48 customer 테이블에서 박세리 고객의 주소를 김연아 고객의 주소로 변경하시오.
+update customer
+set address = (select address from customer where name='김연아')
+where name like'박세리';
+
+--3-49 customer 테이블에서 고객번호가 5인 고객을 삭제하시오,
+delete from customer
+where custid=5;
+
+--3-50 모든 고객을 삭제하시오.
+delete from customer;
+
+commit;
+
+
+
+-- spool 설정
+spool c:\temp\db02_14_2.txt
+
+--3-23 고객의 이름과 고객이 주문한 도서의 판매가격을 검색하시오.
+select name, saleprice
+from Customer, Orders
+where customer.custid = orders.custid;
+
+--3-24 고객별로 주문한 모든 도서의 총 판매액을 구하고, 고객별로 정렬하시오.
+select name, sum(saleprice)
+from customer, orders
+where customer.custid = orders.custid
+group by customer.name
+order by customer.name;
+
+--3-25 고객의 이름과 고객이 주문한 도서의 이름을 구하시오.
+select customer.name, book.bookname
+from customer, orders, book
+where customer.custid = orders.custid and orders.bookid = book.bookid;
+
+--3-26 가격이 20,000원인 도서를 주문한 고객의 이름과 도서의 이름을 구하시오.
+select customer.name, book.bookname
+from customer, orders, book
+where customer.custid = orders.custid and orders.bookid = book.bookid and book.price = 20000;
+
+--3-27 도서를 구매하지 않은 고객을 포함하여 고객의 이름과 고객이 주문한 도서의 판매가격을 구하시오.
+select customer.name, saleprice
+from customer left outer join
+       orders on customer.custid = orders.custid;
+
+select customer.name, saleprice
+from customer, orders
+where customer.custid = orders.custid(+);
+위의 두 식은 같은 말이다. 두가지 방법이 있다.
+
+--3-27-2 주문하지 않는 도서를 포함하여 주문번호와 도서번호를 검색하시오.
+select book.bookid, orders.orderid
+from book left outer join orders on book.bookid = orders.bookid;
+
+
+
+--4-1 -78과 +78의 절댓값을 구하시오.
+select abs(-78), abs(+78);
+from dual;
+
+--4-2 4.875를 소수 첫째 자리까지 반올림한 값을 구하시오.
+select round(4.875, 1);
+from dual;
+
+--4-3 고객별 평균 주문 금액을 백 원 단위로 반올림한 값을 구하시오.
+select custid "고객번호", round(sum(saleprice)/count(*), -2) "평균금액"
+from orders
+group by custid;
+
+--4-4 도서 제목에 야구가 포함된 도서를 농구로 변경한 후 도서 목록을 보이시오.
+select bookid, replace(bookname, '야구', '농구') bookname, publisher, price
+from book;
+
+--4-5 굿스포츠에서 출판한 도서의 제목과 제목의 글자 수를 확인하시오.
+(한글은 2바이트 혹은 UNICODE 경우는 3바이트를 차지함)
+select bookname "제목", length(bookname) "글자수", lengthb(bookname) "바이트수"
+from book
+where publisher = '굿스포츠';
+
+--4-6 마당서점의 고객 중에서 같은 성을 가진 사람이 몇 명이나 되는지 성별 인원수를 구하시오.
+select substr(name, 1, 1) "성", count(*) "인원"
+from customer
+group by substr(name, 1, 1);
+s
+--4-7 마당서점은 주문일로부터 10일 후 매출을 확정한다. 각 주문의 확정일자를 구하시오.
+select orderid "주문번호", orderdate "주문일", orderdate+10 "확정"
+from orders;
+
+--4-8 마당서점이 2014년 7월7일에 주문받은 도서의 주문번호, 주문일, 고객번호, 도서번호를 모두 보이시오.
+단, 주문일은 'yyyy-mm-dd 요일' 형태로 표시한다.
+select orderid "주문번호", to_char(orderdate, 'yyyy-mm-dd dy') "주문일", custid "고객번호", bookid "도서번호"
+from orders
+where orderdate=TO_date('20140707', 'yyyymmdd');
+
+--4-9   없음 XXXXXX
+
+
+create table mybook (
+ bookid number primary key,
+ price number);
+
+insert into mybook
+values(1, 10000);
+insert into mybook
+values(2, 20000);
+insert into mybook
+values(3, null);
+
+--4-10 이름, 전화번화 포함된 고객목록을 보이시오.
+단, 전화번호가 없는 고객은 '연락처없음'으로 표시한다.
+select name"이름", NVL(phone, '연락처없음') "전화번호"
+from customer;
+
+--4-11 고객 목록에서 고객번호, 이름, 전화번호를 앞의 두 명만 보이시오.
+select rownum "순번", custid, name, phone
+from customer
+where rownum <= 2;
+
+
+
+
+
+
+
+
+
