@@ -1,0 +1,132 @@
+-- spool 설정
+spool c:\temp\db03.txt
+
+--오라클 유저 확인
+select uid, user from dual;
+
+--
+select rownum, ename from emp;
+
+select rownum, ename from emp
+order by sal desc;
+
+--car 테이블 생성
+create table car(carname varchar2(15), km number(5));
+insert into car values ('소나타', 35000);
+insert into car values ('아반떼', 4500);
+insert into car values ('소나타', 25000);
+insert into car values ('그랜저', 15000);
+insert into car values ('그랜저', 5000);
+insert into car values ('아반떼', 50000);
+
+--nvl2() :
+-- 수당이 없으면 0, null 이 아니면 10%인상
+select empno, ename, nvl2(comm, comm*1.1, 0)
+from emp;
+
+select * from emp;
+
+--nullif()
+select empno, ename, nullif(comm, 0)
+from emp;
+
+--자동차별로 주행거리를 구할때
+select carname 차종, km 주행거리,
+ sum(km) over (partition by carname order by carname) 누적주행거리
+from car;
+
+select carname 차종, km 주행거리,
+ sum(km) over (partition by carname order by km) 누적주행거리
+from car;
+
+--부서별 사원이름, 급여, 급여평균을 출력
+select deptno, avg(sal)
+from emp
+group by deptno;
+
+select deptno, ename, sal,
+ avg(sal) over (partition by deptno order by empno) 급여평균
+from emp;
+
+--row_number() : 각 행마다 순위 부여
+select deptno, ename, sal,
+ row_number() over (partition by deptno order by sal desc) 순위
+from emp;
+
+--rank()
+select deptno, ename, sal,
+ rank() over (partition by deptno order by sal desc) 순위
+from emp;
+
+--group by / partition by
+--매니저별 급여의 합, 최대 급여를 출력
+-- 1) group by
+select mgr, sum(sal), max(sal)
+from emp
+group by mgr;
+
+-- 2) partition by
+select mgr, 
+ sum (sal) over (partition by mgr) 합계,
+ max (sal) over (partition by mgr) 최대급여
+from emp;
+
+
+--매니저별 사원수, 사원이름, 급여, 급여합을 출력
+select mgr, count(empno) over (partition by mgr) 사원수,
+ ename, sal, sum(sal) over (partition by mgr) 급여합
+from emp;
+
+--매니저별 사원이름, hiredate, 급여, 급여평균을 hiredate순으로 출력
+select mgr, ename, hiredate, sal,
+ avg(sal) over (partition by mgr order by hiredate) 급여평균
+from emp;
+
+select mgr, ename, hiredate, sal,
+round(avg(sal) over (partition by mgr order by hiredate)) 급여평균
+from emp;
+
+--first_value
+select deptno, ename, sal,
+ first_value(ename) over (partition by deptno order by sal desc) 순위
+from emp;
+
+--
+select rownum, ename, sal
+from (select * from emp order by sal desc)
+order by ename;
+
+select rownum, ename
+from (select * from emp order by sal desc);
+
+--부서별 사원수, 총 사원수를 출력
+select deptno, count(*)
+from emp
+group by rollup(deptno);
+
+--매니저별 사원수, 총 사원수를 출력
+select mgr, count(*)
+from emp
+group by rollup(mgr);
+
+--부서, 직업별 사원수와 부서별 평균급여의 소계를 출력
+select deptno, job, count(*), avg(sal)
+from emp
+group by rollup(deptno, job);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
