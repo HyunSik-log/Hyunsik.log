@@ -1,0 +1,142 @@
+spool C:\temp\db02_16.txt
+
+--뷰 생성
+create view emp_view
+as
+select * from emp;
+
+grant create view to scott;
+revoke grant create view from scott;
+
+create table emp_copy
+as select * from emp;
+
+--empno, ename, deptno
+select empno, ename, deptno
+from emp_copy
+where deptno = 30;
+
+create view emp_view_dept30
+as
+select empno, ename, deptno
+from emp_copy
+where deptno = 30;
+
+select view_name, read_only, text
+from user_views
+where view_name in('EMP_VIEW_DEPT30');
+
+--999, kim, 30
+insert into emp_view_dept30
+values(999, 'kim', 30);
+
+select * from emp_view_dept30;
+
+create view emp_view_dept
+as
+select e.empno, e.ename, e.sal, d.deptno, d.dname, d.loc
+from emp_copy e, dept_copy d
+where e.deptno = d.deptno;
+
+select view_name, text, read_only
+from user_views
+where view_name in('EMP_VIEW_DEPT');
+
+select ename, dname
+from emp_view_dept
+where dname = 'SALES';
+
+drop view emp_view_dept;
+
+create or replace view emp_view_dept30
+as
+select empno,ename,sal,comm,deptno
+from emp_copy
+where deptno = 30;
+
+ create table emp_copy2
+  as
+  select * from emp_copy;
+
+create or replace view view_chk30
+as
+select empno,ename,sal,comm,deptno
+from emp_copy2
+where deptno=30
+with check option;
+
+update view_chk30
+set deptno = 20
+where sal > 1000;
+
+update view_chk30
+set comm = 100
+where sal > 1000;
+
+--
+create or replace view view_read30
+as
+select empno,ename,sal,comm,deptno
+from emp_copy2
+where deptno = 30
+with read only;
+
+--
+update view_read30
+set comm = 999;
+
+select view_name, text, read_only
+from user_views
+where view_name in('VIEW_READ30');
+
+1. 부서별 최대급여, 최소 급여를 출력하는 뷰
+create view view_maxsal_minsal
+as
+select deptno, max(sal) max, min(sal) min
+from emp_copy2
+group by deptno;
+
+2.emp_view를 기본으로 empno, ename, sal, deptno를 포함하는뷰
+create view view_emp_view
+as
+select empno, ename, sal, deptno
+from emp_view;
+
+3.emp_copy에서 depno가 30인 사원으로 구성된 emp_copy_view 를 작성(단, deptno는 수정불가로 함)
+create view emp_copy_view
+as
+select *
+from emp_copy
+where deptno=30
+with check option;
+
+create user jdbc
+identified by jdbc
+default tablespace users;
+
+create table dept
+(did varchar2(10),
+ dname varchar2(15),
+ primary key(did));
+
+insert into dept 
+values ('IT_01', '컴퓨터과');
+insert into dept 
+values ('IT_02', '건축과');
+
+
+create table student
+(sid char(7) not null primary key,
+ sname varchar2(10) not null,
+ did varchar2(10) not  null,
+ constraint fk_did foreign key(did) references dept(did));
+
+데이터 입력
+insert into student 
+values ('100100', '김철수', 'IT_02'  );
+insert into student 
+values ('100200', '이철수', 'IT_01'  );
+insert into student 
+values ('100300' , '김철수', 'IT_02' );
+
+

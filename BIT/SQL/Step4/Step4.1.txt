@@ -1,0 +1,98 @@
+-- spool 설정
+spool c:\temp\db04.txt
+
+--오라클 유저 확인
+select uid, user from dual;
+
+--뷰 생성
+create view emp_view
+as
+select * from emp;
+
+--뷰를 생성할 수 없다고 나온다 그래서 
+--뷰를 생성하기 전에
+{
+conn system를 해서
+Enter password: manager
+Connected
+}  를 확인을 먼저 한다.
+grant create view to scott;
+를 입력하고 다시 뷰 생성
+
+--지우고
+drop table emp_copy
+--다시만들고
+create table emp_copy
+as select * from emp;
+
+--empno, ename, deptno
+select empno, ename, deptno
+from emp_copy
+where deptno = 30;
+
+create view emp_view_dept30
+as
+select empno, ename, deptno
+from emp_copy
+where deptno = 30;
+
+select * from emp_view_dept30;
+
+select view_name, read_only, text
+from user_views;
+where view_name in ('emp_view_dept30');
+
+-- (999, kim, 30)
+insert into emp_view_dept30 values(999, 'kim', 30);
+
+select * from emp_view_dept30;
+
+select * from emp_copy;
+
+--empno, ename, sal, deptno, dname, loc를 뷰(emp_view_dept)를 생성
+select e.empno, e.ename, e.sal, d.deptno, d.dname, d.loc
+from emp_copy e, dept d
+where e.deptno = d.deptno;
+
+create view emp_view_dept
+as
+select e.empno, e.ename, e.sal, d.deptno, d.dname, d.loc
+from emp_copy e, dept d
+where e.deptno = d.deptno;
+
+select * from emp_view_dept;
+
+--뷰 확인(text, read_only, view_name)
+select view_name, text, read_only
+from user_views
+where view_name in ('EMP_VIEW_DEPT');
+
+
+1. 부서이름별 최대급여, 최소 급여를 출력하는 뷰
+                                                                                                                                        
+2. emp_view에서 empno를 empno + 100으로 수정하는 뷰 를 작성
+
+3. emp_copy에서 deptno가 30인 사원으로 구성된 emp_cpoy_view30을 작성
+(단, deptno는 수정 불가로 함)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

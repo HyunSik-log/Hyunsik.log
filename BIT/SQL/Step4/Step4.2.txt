@@ -1,0 +1,33 @@
+create table dept
+(did varchar2(10),
+ dname varchar2(15),
+ primary key(did));
+
+create table student
+(sid char(7) not null primary key,
+ sname varchar2(10) not null,
+ did varchar2(10) not  null,
+ constraint fk_did foreign key(did) references dept(did));
+
+--dept 데이터 입력
+insert into dept 
+values ('IT_01', '컴퓨터과');
+insert into dept 
+values ('IT_02', '건축과');
+
+-- student 테이블에 데이터 입력
+insert into student 
+values ('100100', '김철수', 'IT_02'  );
+insert into student 
+values ('100200', '이철수', 'IT_01'  );
+insert into student 
+values ('100300' , '김철수', 'IT_02' );
+
+
+
+
+
+
+
+
+
