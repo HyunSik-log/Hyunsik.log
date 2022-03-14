@@ -1,0 +1,126 @@
+c:\Program Files\MongoDB\Server\5.0\bin>mongo
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("fca64a79-0cbe-4214-9909-5adbaee93317") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-03-14T16:16:53.466+09:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+MongoDB Enterprise > show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+MongoDB Enterprise > db
+test
+MongoDB Enterprise > use songs
+switched to db songs
+MongoDB Enterprise > db
+songs
+MongoDB Enterprise > show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+MongoDB Enterprise > cls
+
+---------cls 하면 커맨드 창이 다 깔끔히 지워진다---------
+
+MongoDB Enterprise > x = 200
+200
+MongoDB Enterprise > x / 5;
+40
+MongoDB Enterprise >  Math.sin(30);
+-0.9880316240928618
+MongoDB Enterprise > show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+MongoDB Enterprise > Math.sin(Math.PI / 2);
+1
+MongoDB Enterprise > x
+200
+MongoDB Enterprise > x = x / 40
+5
+MongoDB Enterprise > x
+5
+MongoDB Enterprise >
+MongoDB Enterprise > new Date("2022/1/1")
+ISODate("2021-12-31T15:00:00Z")
+MongoDB Enterprise > new Date("2022/2/17")
+ISODate("2022-02-16T15:00:00Z")
+MongoDB Enterprise >
+MongoDB Enterprise > str = "hello world";
+hello world
+MongoDB Enterprise > str
+hello world
+MongoDB Enterprise > str.replace("world", "mongo")
+hello mongo
+MongoDB Enterprise > str
+hello world
+MongoDB Enterprise > str = str.replace("world", "mongo");
+hello mongo
+MongoDB Enterprise > str
+hello mongo
+MongoDB Enterprise >
+
+--------------------cls----------------------
+
+
+MongoDB Enterprise > function fac(n) {
+... if(n <= 1) return 1;
+... return n * fac(n - 1);
+... }
+MongoDB Enterprise > fac(5)
+120
+MongoDB Enterprise > fac(4)
+24
+MongoDB Enterprise >
+
+
+
+--------------------cls----------------------
+
+MongoDB Enterprise > show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+MongoDB Enterprise > show collections
+MongoDB Enterprise > db
+test
+MongoDB Enterprise > use books
+switched to db books
+MongoDB Enterprise > books
+uncaught exception: ReferenceError: books is not defined :
+@(shell):1:1
+MongoDB Enterprise > db
+books
+
+
+MongoDB Enterprise > db.itbook.insert({"title" : "몽고DB 개정판"} )
+WriteResult({ "nInserted" : 1 })
+MongoDB Enterprise > db.itbook.find()
+{ "_id" : ObjectId("620e0667097130f50f6c5cd5"), "title" : "몽고DB 개정판" }
+MongoDB Enterprise > db.itbook.insert({"title" : "오라클", "price" : 25000} )
+WriteResult({ "nInserted" : 1 })
+MongoDB Enterprise > db.itbook.find()
+{ "_id" : ObjectId("620e0667097130f50f6c5cd5"), "title" : "몽고DB 개정판" }
+{ "_id" : ObjectId("620e06cd097130f50f6c5cd6"), "title" : "오라클", "price" : 25000 }
+MongoDB Enterprise > db
+books
+MongoDB Enterprise > db.showcollections
+books.showcollections
+MongoDB Enterprise > show collections
+itbook
+MongoDB Enterprise > exit
+bye
+
+c:\Program Files\MongoDB\Server\5.0\bin>
+
+
