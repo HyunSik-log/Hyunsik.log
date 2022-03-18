@@ -1,0 +1,294 @@
+-----start----------------------
+> db
+test
+> show dbs
+admin   0.000GB
+books   0.000GB
+config  0.000GB
+local   0.000GB
+> use books
+switched to db books
+> db
+books
+> show collections
+itbook
+itbooks
+> db.itbooks.find()
+{ "_id" : ObjectId("620f4d3aa4c73ea51dd64e40"), "title" : "Java 1" }
+{ "_id" : ObjectId("620f4d3aa4c73ea51dd64e41"), "title" : "Java 2" }
+{ "_id" : ObjectId("620f4d3aa4c73ea51dd64e42"), "title" : "Java 3", "저자" : "홍길동" }
+> db.itbook.find()
+{ "_id" : ObjectId("620e0667097130f50f6c5cd5"), "title" : "몽고DB 개정판", "price" : 16000, "저자" : "홍길동" }
+{ "_id" : ObjectId("620e06cd097130f50f6c5cd6"), "title" : "오라클", "price" : 25000 }
+{ "_id" : ObjectId("620e075aa196b4d7d25f6d75") }
+{ "_id" : ObjectId("620f4b0ea4c73ea51dd64e3e"), "title" : "C Programing", "저자" : "홍길동" }
+{ "_id" : ObjectId("620f4c20a4c73ea51dd64e3f"), "title" : "Java", "저자" : "홍길동", "Data" : ISODate("2022-03-11T07:34:56.737Z") }
+{ "_id" : ObjectId("620f4d7da4c73ea51dd64e43"), "title" : "Java 1" }
+{ "_id" : ObjectId("620f4d7da4c73ea51dd64e44"), "title" : "Java 2" }
+{ "_id" : ObjectId("620f4d7da4c73ea51dd64e45"), "title" : "Java 3", "저자" : "홍길동" }
+{ "_id" : ObjectId("620f55f9a4c73ea51dd64e46"), "title" : "C# programming", "price" : 25000 }
+{ "_id" : ObjectId("62134b2c34c3239008985149"), "title" : "class", "price" : 25000 }
+{ "_id" : ObjectId("62134d8334c323900898514a"), "title" : "오라클", "저자" : "홍길순", "price" : 20000, "date" : ISODate("2022-03-11T08:29:55.363Z") }
+{ "_id" : ObjectId("62134f5e34c323900898514b"), "title" : "간단" }
+>cls
+
+
+
+// 특정 단어(ex. col)로 자주쓰는 단어 선언
+> col= db.getCollection("itbook")
+books.itbook
+> col
+books.itbook
+> db.itbook.findOne()
+{
+        "_id" : ObjectId("620e0667097130f50f6c5cd5"),
+        "title" : "몽고DB 개정판",
+        "price" : 16000,
+        "저자" : "홍길동"
+}
+> col.findOne()
+{
+        "_id" : ObjectId("620e0667097130f50f6c5cd5"),
+        "title" : "몽고DB 개정판",
+        "price" : 16000,
+        "저자" : "홍길동"
+}
+>cls
+
+
+
+
+//인터프리터 (한줄 들어올 때마다 해석해주는것)
+> x = 200
+200
+> x * 10
+2000
+> x
+200
+> x = x * 5
+1000
+> x
+1000
+> cls
+
+
+
+> col.find({저자 : "홍길동"})
+{ "_id" : ObjectId("620e0667097130f50f6c5cd5"), "title" : "몽고DB 개정판", "price" : 16000, "저자" : "홍길동" }
+{ "_id" : ObjectId("620f4b0ea4c73ea51dd64e3e"), "title" : "C Programing", "저자" : "홍길동" }
+{ "_id" : ObjectId("620f4c20a4c73ea51dd64e3f"), "title" : "Java", "저자" : "홍길동", "Data" : ISODate("2022-03-16T07:34:56.737Z") }
+{ "_id" : ObjectId("620f4d7da4c73ea51dd64e45"), "title" : "Java 3", "저자" : "홍길동" }
+> col.find({저자 : "홍길동"}, {title:1, 저자:1})
+{ "_id" : ObjectId("620e0667097130f50f6c5cd5"), "title" : "몽고DB 개정판", "저자" : "홍길동" }
+{ "_id" : ObjectId("620f4b0ea4c73ea51dd64e3e"), "title" : "C Programing", "저자" : "홍길동" }
+{ "_id" : ObjectId("620f4c20a4c73ea51dd64e3f"), "title" : "Java", "저자" : "홍길동" }
+{ "_id" : ObjectId("620f4d7da4c73ea51dd64e45"), "title" : "Java 3", "저자" : "홍길동" }
+> col.find({저자 : "홍길동"}, {title:1, _id:0})
+{ "title" : "몽고DB 개정판" }
+{ "title" : "C Programing" }
+{ "title" : "Java" }
+{ "title" : "Java 3" }
+>cls
+
+
+
+// Query 조건문 찾는법
+> col.find({저자: /홍/})
+{ "_id" : ObjectId("620e0667097130f50f6c5cd5"), "title" : "몽고DB 개정판", "price" : 16000, "저자" : "홍길동" }
+{ "_id" : ObjectId("620f4b0ea4c73ea51dd64e3e"), "title" : "C Programing", "저자" : "홍길동" }
+{ "_id" : ObjectId("620f4c20a4c73ea51dd64e3f"), "title" : "Java", "저자" : "홍길동", "Data" : ISODate("2022-03-16T07:34:56.737Z") }
+{ "_id" : ObjectId("620f4d7da4c73ea51dd64e45"), "title" : "Java 3", "저자" : "홍길동" }
+{ "_id" : ObjectId("62134d8334c323900898514a"), "title" : "오라클", "저자" : "홍길순", "price" : 20000, "date" : ISODate("2022-03-11T08:29:55.363Z") }
+> col.find({저자: /홍길/}, {title:1})
+{ "_id" : ObjectId("620e0667097130f50f6c5cd5"), "title" : "몽고DB 개정판" }
+{ "_id" : ObjectId("620f4b0ea4c73ea51dd64e3e"), "title" : "C Programing" }
+{ "_id" : ObjectId("620f4c20a4c73ea51dd64e3f"), "title" : "Java" }
+{ "_id" : ObjectId("620f4d7da4c73ea51dd64e45"), "title" : "Java 3" }
+{ "_id" : ObjectId("62134d8334c323900898514a"), "title" : "오라클" }
+> col.find({저자: /길순/}, {title:1})
+{ "_id" : ObjectId("62134d8334c323900898514a"), "title" : "오라클" }
+>cls
+
+
+
+// 새로 만들어보기
+> show dbs
+admin   0.000GB
+books   0.000GB
+config  0.000GB
+local   0.000GB
+> use store
+switched to db store
+> db
+store
+> db.drink.insert({"_id":10, "name" : "cocacola" })
+WriteResult({ "nInserted" : 1 })
+> show dbs
+admin   0.000GB
+books   0.000GB
+config  0.000GB
+local   0.000GB
+store   0.000GB
+> db
+store
+> db.drink.find()
+{ "_id" : 10, "name" : "cocacola" }
+> show collections
+drink
+>cls
+
+
+// MongoDBCo로 사이다를 넣고 검색
+> db.drink.find()
+{ "_id" : 10, "name" : "cocacola" }
+{ "_id" : 11, "name" : "cider" }
+>cls
+
+
+// drinks.json 파일을 MongoDBCo에서 ADD DATA > Import File로 추가하면
+> db.drink.find()
+{ "_id" : 10, "name" : "cocacola" }
+{ "_id" : 11, "name" : "cider" }
+{ "_id" : 1, "name" : "Java Hut", "description" : "Coffee and cakes", "content" : "베스트메뉴1위" }
+{ "_id" : 2, "name" : "Burger Buns", "description" : "Gourmet hamburgers" }
+{ "_id" : 3, "name" : "Coffee Shop", "description" : "Just coffee" }
+{ "_id" : 4, "name" : "Clothes Clothes Clothes", "description" : "Discount clothing" }
+{ "_id" : 5, "name" : "Java Shopping", "description" : "Indonesian goods" }
+{ "_id" : 6, "name" : "CoCo" }
+{ "_id" : 7, "name" : "BumBum", "description" : "---" }
+{ "_id" : 8, "name" : "Choco", "description" : "Cocoa and Milk" }
+{ "_id" : 9, "name" : "WhiteShake", "description" : "Cream and Milk" }
+>cls
+
+
+// 특정 단어 찾기 and ID 안나오게 찾기
+> show collections
+drink
+> db.drink.find({name:"CoCo"})
+{ "_id" : 6, "name" : "CoCo" }
+> db.drink.find({name:/CoCo/})
+{ "_id" : 6, "name" : "CoCo" }
+> db.drink.find({name:/Co/})
+{ "_id" : 3, "name" : "Coffee Shop", "description" : "Just coffee" }
+{ "_id" : 6, "name" : "CoCo" }
+> db.drink.find({name:/Co/}, {_id:0})
+{ "name" : "Coffee Shop", "description" : "Just coffee" }
+{ "name" : "CoCo" }
+
+// i 를 입력하면 대소문자 전부 다 찾는다.
+> db.drink.find({name:/Co/i}, {_id:0})
+{ "name" : "cocacola" }
+{ "name" : "Coffee Shop", "description" : "Just coffee" }
+{ "name" : "CoCo" }
+{ "name" : "Choco", "description" : "Cocoa and Milk" }
+> db.drink.find({name:/Co/i}, {_id:0}).count()
+4
+> db.drink.find({name:/Co/}, {_id:0}).count()
+2
+> cls
+
+
+//limit는 제한된 갯수 확인
+> db.drink.find().limit(3)
+
+{ "_id" : 10, "name" : "cocacola" }
+{ "_id" : 11, "name" : "cider" }
+{ "_id" : 1, "name" : "Java Hut", "description" : "Coffee and cakes", "content" : "베스트메뉴1위" }
+
+> db.drink.find().limit(5)
+
+{ "_id" : 10, "name" : "cocacola" }
+{ "_id" : 11, "name" : "cider" }
+{ "_id" : 1, "name" : "Java Hut", "description" : "Coffee and cakes", "content" : "베스트메뉴1위" }
+{ "_id" : 2, "name" : "Burger Buns", "description" : "Gourmet hamburgers" }
+{ "_id" : 3, "name" : "Coffee Shop", "description" : "Just coffee" }
+
+
+// -1을 하면 역순으로 나온다
+> db.drink.find().sort({name:-1})
+
+{ "_id" : 10, "name" : "cocacola" }
+{ "_id" : 11, "name" : "cider" }
+{ "_id" : 9, "name" : "WhiteShake", "description" : "Cream and Milk" }
+{ "_id" : 5, "name" : "Java Shopping", "description" : "Indonesian goods" }
+{ "_id" : 1, "name" : "Java Hut", "description" : "Coffee and cakes", "content" : "베스트메뉴1위" }
+{ "_id" : 3, "name" : "Coffee Shop", "description" : "Just coffee" }
+{ "_id" : 6, "name" : "CoCo" }
+{ "_id" : 4, "name" : "Clothes Clothes Clothes", "description" : "Discount clothing" }
+{ "_id" : 8, "name" : "Choco", "description" : "Cocoa and Milk" }
+{ "_id" : 2, "name" : "Burger Buns", "description" : "Gourmet hamburgers" }
+{ "_id" : 7, "name" : "BumBum", "description" : "---" }
+
+> db.drink.find().sort({name:-1}).limit(5)
+
+{ "_id" : 10, "name" : "cocacola" }
+{ "_id" : 11, "name" : "cider" }
+{ "_id" : 9, "name" : "WhiteShake", "description" : "Cream and Milk" }
+{ "_id" : 5, "name" : "Java Shopping", "description" : "Indonesian goods" }
+{ "_id" : 1, "name" : "Java Hut", "description" : "Coffee and cakes", "content" : "베스트메뉴1위" }
+>cls
+
+//null 값을 구하기
+> db.drink.find({description : null})
+{ "_id" : 10, "name" : "cocacola" }
+{ "_id" : 11, "name" : "cider" }
+{ "_id" : 6, "name" : "CoCo" }
+
+//id의 숫자가 6이상 10이하의 숫자를 구하기
+> db.drink.find({$and: [{_id: {$gte :6}}, {_id: {$lte:10}}]})
+{ "_id" : 6, "name" : "CoCo" }
+{ "_id" : 7, "name" : "BumBum", "description" : "---" }
+{ "_id" : 8, "name" : "Choco", "description" : "Cocoa and Milk" }
+{ "_id" : 9, "name" : "WhiteShake", "description" : "Cream and Milk" }
+{ "_id" : 10, "name" : "cocacola" }
+
+
+//song에서 015B인 가수의 노래의 수는?
+> db.song.find({singer: "015B"}).count()
+7
+
+
+
+//song에서 슬픈인연 노래에 hit 수를 1 증기시키기
+> db
+store
+> show collections
+drink
+song
+> db.song.update({title:"슬픈 인연"}, {"$inc":{hit:1}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.song.findOne()
+{
+        "_id" : ObjectId("600e295e1d8f56329c0f4b09"),
+        "title" : "슬픈 인연",
+        "singer" : "015B",
+        "lyrics" : "멀어져 가는 저 뒷모습을 바라보면서\n난 아직도 이 순간을 이별이라 하지 않겠네\n달콤 했었지 그 수많았던 추억속에서\n흠뻑 젖은 두 마음을 우린 어떻게 잊을까\n아 다시 올거야 너는 외로움을 견 딜 수 없어\n아 나의 곁으로 다시 돌아 올거야\n그러나 그 시절에 너를 또 만나서\n사랑할 수 있을까\n흐르는 그 세월에 나는 또 얼마나\n많은 눈물을 흘리려나\n\n아 다시 올거야 너는 외로움을 견딜 수 없어\n아 나의 곁으로 다시 돌아 올거야\n그러나 그 시절에 너를 또 만나서\n사랑할 수 있을까\n흐르는 그 세월에 나는 또 얼마나\n많은 눈물을 흘리려나",
+        "hit" : 523
+}
+
+//댓글 추가해보기
+> db.song.update({title:"슬픈 인연"}, {"$push": {"댓글" : "좋은노래 입니다"}}  )
+
+
+// 노래 전체 수
+> db.song.find().count()
+45655
+
+// 가수 015B를 지우기
+> db.song.remove({"singer" : "015B"})
+WriteResult({ "nRemoved" : 7 })
+
+
+DB가 충돌이 날 수 있으니 song2를 만들든가 해서 새로 해봐도 된다.
+
+
+> exit
+
+
+
+
+
+
+
+
+
