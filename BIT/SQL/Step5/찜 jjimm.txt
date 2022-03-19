@@ -1,0 +1,47 @@
+                       mid     /    cid
+
+insert into jjimm values (5499, 1);
+insert into jjimm values (5521, 1);
+insert into jjimm values (5782, 1);
+
+insert into jjimm values (5654, 2);
+insert into jjimm values (5839, 2);
+
+insert into jjimm values (5654, 3);
+insert into jjimm values (5499, 3);
+insert into jjimm values (5900, 3);
+
+insert into jjimm values (5822, 4);
+insert into jjimm values (5521, 4);
+insert into jjimm values (5369, 4);
+
+insert into jjimm values (5788, 5);
+insert into jjimm values (5332, 5);
+insert into jjimm values (5844, 5);
+insert into jjimm values (5822, 5);
+
+insert into jjimm values (5566, 6);
+insert into jjimm values (5900, 6);
+insert into jjimm values (5782, 6);
+
+insert into jjimm values (5499, 7);
+insert into jjimm values (5839, 7);
+insert into jjimm values (5876, 7);
+insert into jjimm values (5002, 7);
+
+insert into jjimm values (5332, 8);
+insert into jjimm values (5698, 8);
+insert into jjimm values (5521, 8);
+
+insert into jjimm values (5902, 9);
+insert into jjimm values (5369, 9);
+
+insert into jjimm values (5844, 10);
+insert into jjimm values (5334, 10);
+insert into jjimm values (5782, 10);
+
+
+
+
+
+

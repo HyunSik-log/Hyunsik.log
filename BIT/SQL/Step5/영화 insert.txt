@@ -1,0 +1,38 @@
+영화코드    감독     제목     제작사    배급사    러닝타임    관람등급    개봉일    장르
+
+insert into movie values
+(5369, 'Anthony Russo', 'Infinity War',  'Marvel', 'CJ', '149', '15', '2018.04.25', 'Action');
+insert into movie values
+(5499, 'Anthony Russo', 'Captain America', 'Marvel', 'MS', '147', '12', '2016.04.27', 'Action');
+insert into movie values
+(5521, 'Anna Boden', 'Captain Marvel', 'Marvel', 'CJ', '123', '15', '2019.03.06', 'SF');
+insert into movie values
+(5566, 'Jon Favreau', Iron Man', 'Marvel', 'LA', '125', '12', '2008.04.30', 'Fantasy');
+insert into movie values
+(5654, 'James Gunn', 'Guardians of the Galaxy', Marvel,' 'LA', '136', '18', '2017.05.03', 'SF');
+insert into movie values
+(5698, 'Ryan Coogler', 'Black Panther', 'Marvel', 'CJ', '135', '12', '2018.02.14', 'Action');
+insert into movie values
+(5782, 'Anthony Russo', 'Endgame', 'Marvel', 'MS', '181', '12', '2019.04.24', 'Action');
+insert into movie values
+(5788, 'Christopher Nolan', 'The Dark Knight Rises', 'DC Comics', 'LA', '164', '15', '2012.07.19', 'Crime');
+insert into movie values
+(5839, 'Zack Snyder', 'Man of Steel', 'DC Comics', 'CJ', '143', '12', '2013.06.13', 'Fantasy');
+insert into movie values
+(5844, 'Zack Snyder', 'Batman v Superman', 'DC Comics', 'MS', '151', '12', '2016.03.24', 'Action');
+insert into movie values
+(5876, 'Todd Phillips', 'Joker', 'DC Comics', 'MS', '123', '15', '2019.10.02', 'Thriller');
+insert into movie values
+(5900, 'Chris Columbus', 'Home Alone', 'Hughes', 'LA', '105', 'All', '1991.07.06', 'Comedy');
+insert into movie values
+(5902, 'Jennifer Lee', 'Frozen', 'Walt Disney', 'US', '108', 'All', '2014.01.16', 'Animation');
+insert into movie values
+(5334, 'Lee Byung-hun', 'Extreme Job', 'CJ ENM', 'CJ', '111', '15', '2019.01.23', 'Comedy');
+insert into movie values
+(5002, 'RYOO Seung-wan' ,'Veteran', 'Filmrnk', 'CJ', 123', '15', '2015.08.05', 'Action');
+insert into movie values
+(5467, Choi Dong-hun', 'The Thieves', 'kferfilm', 'CJ', '135', '15', '2012.07.25', 'Thriller');
+insert into movie values
+(5332, 'Christopher Nolan', 'Interstellar', 'Legendary Pictures', 'US', '169', '12', '2014.11.06', 'SF');
+insert into movie values
+(5822, 'Jon Watts', 'Spider-Man', 'Sony Pictures', 'LA', '148', '12', '2021.12.15', 'Action');

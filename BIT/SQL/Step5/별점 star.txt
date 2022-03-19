@@ -1,0 +1,66 @@
+                         cid  /  mid  /  score
+
+insert into star values (1, 5698, 3);
+insert into star values (1, 5499, 4);
+insert into star values (1, 5521, 2);
+insert into star values (1, 5566, 2);
+insert into star values (1, 5782, 5);
+
+insert into star values (2, 5788, 5);
+insert into star values (2, 5876, 4);
+insert into star values (2, 5839, 4);
+insert into star values (2, 5654, 2);
+insert into star values (2, 5002, 1);
+
+insert into star values (3, 5467, 2);
+insert into star values (3, 5499, 1);
+insert into star values (3, 5654, 4);
+insert into star values (3, 5900, 3);
+insert into star values (3, 5902, 2);
+
+insert into star values (4, 5788, 1);
+insert into star values (4, 5822, 4);
+insert into star values (4, 5521, 3);
+insert into star values (4, 5332, 5);
+insert into star values (4, 5369, 5);
+
+insert into star values (5, 5332, 2);
+insert into star values (5, 5788, 3);
+insert into star values (5, 5369, 2);
+insert into star values (5, 5822, 5);
+insert into star values (5, 5844, 4);
+
+insert into star values (6, 5782, 5);
+insert into star values (6, 5002, 5);
+insert into star values (6, 5566, 5);
+insert into star values (6, 5698, 5);
+insert into star values (6, 5900, 5);
+
+insert into star values (7, 5876, 4);
+insert into star values (7, 5900, 3);
+insert into star values (7, 5499, 2);
+insert into star values (7, 5839, 3);
+insert into star values (7, 5002, 2);
+
+insert into star values (8, 5334, 4);
+insert into star values (8, 5521, 5);
+insert into star values (8, 5332, 2);
+insert into star values (8, 5369, 1);
+insert into star values (8, 5698, 4);
+
+insert into star values (9, 5782, 5);
+insert into star values (9, 5499, 5);
+insert into star values (9, 5902, 2);
+insert into star values (9, 5369, 1);
+insert into star values (9, 5876, 4);
+
+insert into star values (10, 5782, 4);
+insert into star values (10, 5902, 3);
+insert into star values (10, 5334, 3);
+insert into star values (10, 5844, 2);
+insert into star values (10, 5876, 4);
+
+
+
+
+
