@@ -1,0 +1,73 @@
+movie ccustomer branch screen(size -> ssize) seat running ticketing jjimm
+
+create table movie(
+mid number primary key,
+director varchar2(30),
+title varchar2(30),
+production varchar2(30),
+publisher varchar2(30),
+runningtime varchar2(30),
+grade varchar2(30),
+release date,
+ganre varchar2(30)
+);
+
+create table ccustomer(
+cid number primary key,
+tel varchar2(30),
+cname varchar2(30),
+birth date,
+caddress varchar2(30)
+);
+
+create table branch(
+bid number primary key,
+bname varchar2(30),
+tel  varchar2(30),
+address varchar2(30)
+);
+
+create table screen(
+screenid number primary key,
+bid number references branch(bid),
+seatcount number,
+);
+
+create table seat(
+sid number primary key,
+screenid number references screen(screenid),
+couple number
+);
+
+create table running (
+rid number primary key,
+mid number references movie(mid),
+screenid number references screen(screenid),
+rtime date
+);
+
+create table ticketing(
+tid number primary key,
+rid number references  running(rid),
+cid number references ccustomer(cid)
+);
+
+create table jjimm(
+mid number references movie(mid),
+cid number references ccustomer(cid),
+primary key(mid, cid)
+);
+
+create table star(
+cid number references ccustomer(cid),
+mid number references movie(mid),
+score number,
+primary key(mid, cid)
+);
+
+create table tickinga(
+tid number references ticketing(tid),
+sid number references seat(sid),
+tatime date,
+primary key(tid, sid)
+);
