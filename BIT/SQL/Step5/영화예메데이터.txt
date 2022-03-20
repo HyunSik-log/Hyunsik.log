@@ -1,0 +1,250 @@
+-- ccustomer 테이블 데이터
+cid tel cname birth caddress
+insert into ccustomer values(1, '010-1111-1111', '홍길동','2000-05-03','부천시');
+insert into ccustomer values(2, '010-2222-2222', '김정은','1990-08-13','평양시');
+insert into ccustomer values(3, '010-3333-3333', '문재인','1954-02-07','부산광역시');
+insert into ccustomer values(4, '010-4444-4444', '홍준표','1956-04-22','김해');
+insert into ccustomer values(5, '010-5555-5555', '유승민','1952-07-14','울진');
+insert into ccustomer values(6, '010-6666-6666', '심상정','1960-08-20','강릉시');
+insert into ccustomer values(7, '010-7777-7777', '윤석열','1961-12-12','제천시');
+insert into ccustomer values(8, '010-8888-8888', '이정희','1970-01-01','서울특별시');
+insert into ccustomer values(9, '010-9999-9999', '김지석','1980-07-21','서울특별시');
+insert into ccustomer values(10, '032-111-1111', '황지상','2001-03-26','서울특별시');
+
+--movie 테이블 데이터
+insert into movie values
+(5369, 'Anthony Russo', 'Infinity War',  'Marvel', 'CJ', '149', '15', '2018.04.25', 'Action');
+insert into movie values
+(5499, 'Anthony Russo', 'Captain America', 'Marvel', 'MS', '147', '12', '2016.04.27', 'Action');
+insert into movie values
+(5521, 'Anna Boden', 'Captain Marvel', 'Marvel', 'CJ', '123', '15', '2019.03.06', 'SF');
+insert into movie values
+(5566, 'Jon Favreau', Iron Man', 'Marvel', 'LA', '125', '12', '2008.04.30', 'Fantasy');
+insert into movie values
+(5654, 'James Gunn', 'Guardians of the Galaxy', Marvel,' 'LA', '136', '18', '2017.05.03', 'SF');
+insert into movie values
+(5698, 'Ryan Coogler', 'Black Panther', 'Marvel', 'CJ', '135', '12', '2018.02.14', 'Action');
+insert into movie values
+(5782, 'Anthony Russo', 'Endgame', 'Marvel', 'MS', '181', '12', '2019.04.24', 'Action');
+insert into movie values
+(5788, 'Christopher Nolan', 'The Dark Knight Rises', 'DC Comics', 'LA', '164', '15', '2012.07.19', 'Crime');
+insert into movie values
+(5839, 'Zack Snyder', 'Man of Steel', 'DC Comics', 'CJ', '143', '12', '2013.06.13', 'Fantasy');
+insert into movie values
+(5844, 'Zack Snyder', 'Batman v Superman', 'DC Comics', 'MS', '151', '12', '2016.03.24', 'Action');
+insert into movie values
+(5876, 'Todd Phillips', 'Joker', 'DC Comics', 'MS', '123', '15', '2019.10.02', 'Thriller');
+insert into movie values
+(5900, 'Chris Columbus', 'Home Alone', 'Hughes', 'LA', '105', 'All', '1991.07.06', 'Comedy');
+insert into movie values
+(5902, 'Jennifer Lee', 'Frozen', 'Walt Disney', 'US', '108', 'All', '2014.01.16', 'Animation');
+insert into movie values
+(5334, 'Lee Byung-hun', 'Extreme Job', 'CJ ENM', 'CJ', '111', '15', '2019.01.23', 'Comedy');
+insert into movie values
+(5002, 'RYOO Seung-wan' ,'Veteran', 'Filmrnk', 'CJ', 123', '15', '2015.08.05', 'Action');
+insert into movie values
+(5467, Choi Dong-hun', 'The Thieves', 'kferfilm', 'CJ', '135', '15', '2012.07.25', 'Thriller');
+insert into movie values
+(5332, 'Christopher Nolan', 'Interstellar', 'Legendary Pictures', 'US', '169', '12', '2014.11.06', 'SF');
+insert into movie values
+(5822, 'Jon Watts', 'Spider-Man', 'Sony Pictures', 'LA', '148', '12', '2021.12.15', 'Action');
+
+-- branch 테이블 데이터
+bid bname tel address
+insert into branch values(1, '강남점', '02-111-1111', '서울특별시 강남구');
+insert into branch values(2, '서초점', '02-222-2222', '서울특별시 서초구');
+insert into branch values(3, '강동점', '02-333-3333', '서울특별시 강동구');
+insert into branch values(4, '강서점', '02-444-4444', '서울특별시 강서구');
+insert into branch values(5, '강북점', '02-555-5555', '서울특별시 강북구');
+insert into branch values(6, '관악점', '02-666-6666', '서울특별시 관악구');
+insert into branch values(7, '광진점', '02-777-7777', '서울특별시 광진구');
+insert into branch values(8, '구로점', '02-888-8888', '서울특별시 구로구');
+insert into branch values(9, '역곡점', '032-999-9999', '부천시 역곡동');
+
+--screen 테이블 데이터
+screenid bid snum seatcount
+insert into screen values(1,1,1,30);
+insert into screen values(2,1,2,50);
+insert into screen values(3,1,3,60);
+insert into screen values(4,1,4,50);
+insert into screen values(5,1,5,30);
+insert into screen values(6,1,6,80);
+insert into screen values(7,1,7,100);
+insert into screen values(8,2,1,45);
+insert into screen values(9,2,2,34);
+insert into screen values(10,2,3,200);
+insert into screen values(11,2,4,300);
+insert into screen values(12,2,5,30);
+insert into screen values(13,2,6,30);
+insert into screen values(14,2,7,30);
+insert into screen values(15,3,1,30);
+insert into screen values(16,3,2,30);
+insert into screen values(17,3,3,30);
+insert into screen values(18,3,4,30);
+insert into screen values(19,3,5,30);
+insert into screen values(20,3,6,30);
+insert into screen values(21,3,7,30);
+insert into screen values(22,4,1,30);
+insert into screen values(23,4,2,30);
+insert into screen values(24,4,3,30);
+insert into screen values(25,4,4,30);
+insert into screen values(26,4,5,30);
+insert into screen values(27,4,6,30);
+insert into screen values(28,4,7,30);
+insert into screen values(29,5,1,30);
+insert into screen values(30,5,2,30);
+insert into screen values(31,5,3,30);
+insert into screen values(32,5,4,30);
+insert into screen values(33,5,5,30);
+insert into screen values(34,5,6,30);
+insert into screen values(35,5,7,30);
+insert into screen values(36,6,1,30);
+insert into screen values(37,6,2,30);
+insert into screen values(38,6,3,30);
+insert into screen values(39,6,4,30);
+insert into screen values(40,6,5,30);
+insert into screen values(41,6,6,30);
+insert into screen values(42,6,7,30);
+insert into screen values(43,7,1,30);
+insert into screen values(44,7,2,30);
+insert into screen values(45,7,3,30);
+insert into screen values(46,7,4,30);
+insert into screen values(47,7,5,30);
+insert into screen values(48,7,6,30);
+insert into screen values(49,7,7,30);
+insert into screen values(50,8,1,30);
+insert into screen values(51,8,2,30);
+insert into screen values(52,8,3,30);
+insert into screen values(53,8,4,30);
+insert into screen values(54,8,5,30);
+insert into screen values(55,8,6,30);
+insert into screen values(56,8,7,30);
+insert into screen values(57,9,1,30);
+insert into screen values(58,9,2,30);
+insert into screen values(59,9,3,30);
+insert into screen values(60,9,4,30);
+
+--seat 테이블 데이터
+sid screenid couple
+insert into seat values(1,1,1);
+insert into seat values(2,1,1);
+insert into seat values(3,1,1);
+insert into seat values(4,1,0);
+insert into seat values(5,1,0);
+insert into seat values(6,1,0);
+insert into seat values(7,1,0);
+insert into seat values(8,1,0);
+insert into seat values(9,1,0);
+insert into seat values(10,1,0);
+insert into seat values(11,2,1);
+insert into seat values(12,2,1);
+insert into seat values(13,2,1);
+insert into seat values(14,2,0);
+insert into seat values(15,2,0);
+insert into seat values(16,2,0);
+insert into seat values(17,2,0);
+insert into seat values(18,2,0);
+insert into seat values(19,2,0);
+insert into seat values(20,2,0);
+insert into seat values(21,3,1);
+insert into seat values(22,3,1);
+insert into seat values(23,3,1);
+insert into seat values(24,3,0);
+insert into seat values(25,3,0);
+insert into seat values(26,3,0);
+insert into seat values(27,3,0);
+insert into seat values(28,3,0);
+insert into seat values(29,3,0);
+insert into seat values(30,3,0);
+
+--running 테이블 데이터
+insert into running values(1, 5369, 1, '2022-05-03');
+insert into running values(2, 5369, 2, '2022-05-03');
+insert into running values(3, 5369, 3, '2022-05-03');
+insert into running values(4, 5369, 4, '2022-05-03');
+insert into running values(5, 5369, 5, '2022-05-03');
+insert into running values(6, 5369, 6, '2022-05-03');
+insert into running values(7, 5369, 7, '2022-05-03');
+insert into running values(8, 5369, 8, '2022-05-03');
+insert into running values(9, 5369, 9, '2022-05-03');
+insert into running values(10, 5499, 10, '2022-08-03');
+insert into running values(11, 5499, 11, '2022-08-03');
+insert into running values(12, 5499, 12, '2022-08-03');
+insert into running values(13, 5499, 13, '2022-08-03');
+insert into running values(14, 5499, 14, '2022-08-03');
+insert into running values(15, 5499, 15, '2022-08-03');
+insert into running values(16, 5499, 16, '2022-08-03');
+insert into running values(17, 5499, 17, '2022-08-03');
+insert into running values(18, 5499, 18, '2022-08-03');
+insert into running values(19, 5499, 19, '2022-08-03');
+insert into running values(20, 5499, 20, '2022-01-03');
+insert into running values(21, 5521, 21, '2022-01-03');
+insert into running values(22, 5521, 22, '2022-01-03');
+insert into running values(23, 5521, 23, '2022-01-03');
+insert into running values(24, 5521, 24, '2022-01-03');
+insert into running values(25, 5521, 25, '2022-01-03');
+insert into running values(26, 5521, 26, '2022-01-03');
+insert into running values(27, 5521, 27, '2022-01-03');
+insert into running values(28, 5521, 28, '2022-01-03');
+insert into running values(29, 5521, 29, '2022-01-03');
+insert into running values(30, 5521, 30, '2022-01-03');
+
+--ticketing 테이블 데이터
+insert into ticketing values(1,1,1);
+insert into ticketing values(2,2,2);
+insert into ticketing values(3,3,3);
+insert into ticketing values(4,4,4);
+insert into ticketing values(5,5,5);
+insert into ticketing values(6,6,6);
+insert into ticketing values(7,7,7);
+insert into ticketing values(8,8,8);
+insert into ticketing values(9,9,9);
+insert into ticketing values(10,1,1);
+insert into ticketing values(11,2,2);
+insert into ticketing values(14,5,5);
+insert into ticketing values(15,6,6);
+insert into ticketing values(16,7,7);
+insert into ticketing values(17,8,8);
+insert into ticketing values(19,10,1);
+insert into ticketing values(20,11,2);
+insert into ticketing values(21,12,3);
+insert into ticketing values(22,13,4);
+insert into ticketing values(24,15,6);
+insert into ticketing values(25,16,7);
+insert into ticketing values(26,17,8);
+insert into ticketing values(27,18,9);
+
+--tickinga 테이블 데이터
+insert into tickinga values(1, 1, '2022-05-01');
+insert into tickinga values(2, 2, '2022-05-01');
+insert into tickinga values(3, 3, '2022-05-01');
+insert into tickinga values(4, 4, '2022-05-01');
+insert into tickinga values(5, 5, '2022-05-01');
+insert into tickinga values(6, 6, '2022-05-01');
+insert into tickinga values(7, 7, '2022-05-01');
+insert into tickinga values(8, 8, '2022-05-01');
+insert into tickinga values(9, 9, '2022-05-01');
+insert into tickinga values(10, 10, '2022-08-01');
+insert into tickinga values(11, 11, '2022-08-01');
+insert into tickinga values(14, 12, '2022-08-01');
+insert into tickinga values(15, 13, '2022-08-01');
+insert into tickinga values(16, 14, '2022-08-01');
+insert into tickinga values(17, 15, '2022-08-01');
+insert into tickinga values(19, 16, '2022-08-01');
+insert into tickinga values(20, 17, '2022-01-01');
+insert into tickinga values(21, 18, '2022-01-01');
+insert into tickinga values(22, 19, '2022-01-01');
+insert into tickinga values(24, 20, '2022-01-01');
+insert into tickinga values(25, 21, '2022-01-01');
+insert into tickinga values(26, 22, '2022-01-01');
+insert into tickinga values(27, 23, '2022-01-01');
+
+
+
+
+
+
+
+
+
+
