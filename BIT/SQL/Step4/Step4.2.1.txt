@@ -1,4 +1,4 @@
-spool C:\temp\db02_16.txt
+spool C:\temp\db00.txt
 
 --뷰 생성
 create view emp_view
