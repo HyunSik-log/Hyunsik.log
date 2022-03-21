@@ -1,0 +1,37 @@
+[
+  {
+    "title": "몽고DB 정복하기",
+    "author": "홍길동",
+    "price": 18000,
+    "votes": 109,
+    "day": "2021-01-24"
+  },
+  {
+    "title": "몽고DB 정복하기-개정판",
+    "author": "홍길동",
+    "price": 25000,
+    "votes": 77,
+    "day": "2021-01-24"
+  },
+  {
+    "title": "Visual C++",
+    "author": "유재석",
+    "price": 35000,
+    "votes": 9910,
+    "day": "2019-11-02"
+  },
+  {
+    "title": "Visual C++ with MFC",
+    "author": "유재석",
+    "price": 40000,
+    "votes": 210,
+    "day": "2021-01-22"
+  },
+  {
+    "title": "파이썬",
+    "author": "박명수",
+    "price": 40000,
+    "votes": 129910,
+    "day": "2021-01-22"
+  }
+]

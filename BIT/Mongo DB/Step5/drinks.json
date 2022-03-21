@@ -1,0 +1,47 @@
+[
+  {
+    "_id": 1,
+    "name": "Java Hut",
+    "description": "Coffee and cakes",
+    "content": "베스트메뉴1위"
+  },
+  {
+    "_id": 2,
+    "name": "Burger Buns",
+    "description": "Gourmet hamburgers"
+  },
+  {
+    "_id": 3,
+    "name": "Coffee Shop",
+    "description": "Just coffee"
+  },
+  {
+    "_id": 4,
+    "name": "Clothes Clothes Clothes",
+    "description": "Discount clothing"
+  },
+  {
+    "_id": 5,
+    "name": "Java Shopping",
+    "description": "Indonesian goods"
+  },
+  {
+    "_id": 6,
+    "name": "CoCo"
+  },
+  {
+    "_id": 7,
+    "name": "BumBum",
+    "description": "---"
+  },
+  {
+    "_id": 8,
+    "name": "Choco",
+    "description": "Cocoa and Milk"
+  },
+  {
+    "_id": 9,
+    "name": "WhiteShake",
+    "description": "Cream and Milk"
+  }
+]
