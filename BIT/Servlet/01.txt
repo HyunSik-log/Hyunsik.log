@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jsp기초수업</title>
+    <link rel="shortcut" href="logo.jpg">
+    <style>
+        h1{
+            color:blue;
+        }
+        h2{
+            color:red;
+            background-color: yellow;
+            width:200pt;
+        }
+        ul>li{
+            list-style:square;
+            display: inline;
+            padding:20px;            
+            border: 2pt solid;
+        }
+        ul>li>a{
+            text-decoration: none;
+        }
+        ul>li>a:hover{
+            color: red;
+            background: skyblue;         font-style: italic;
+        }
+        
+        .litag{
+            background: green;
+            color: white;
+            font-size: 20pt;
+            width:200pt;
+        }
+        
+        #special{
+            background-color: red;
+        }
+    </style>
+</head>  
+<body>
+    <h1>홍길동</h1>
+    <h2>신입사원</h2>
+    <h1>it부서</h1>
+    <ol>
+        <li class="litag"><a href="#">김치찌개</a></li>
+        <li id="special"><a href="#">라면</a></li>
+        <li><a href="#">김밥</a></li>
+        <li><a href="#">시래기국</a></li>
+        <li><a href="#">뷔페</a></li>       
+    </ol>
+    <ul>
+        <li><a href="http://naver.com">html</a></li>
+        <li><a href="#">css</a></li>
+        <li><a href="#">j-vaScript</a></li>
+        <li><a href="#">jquery</a></li>
+        <li><a href="#">react</a></li>
+    </ul>
+</body>
+</html>
