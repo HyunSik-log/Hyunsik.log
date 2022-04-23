@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+ 
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>게시판 디자인 Test</title>
+
+    <style>
+
+        *{
+
+            margin:0;
+
+            font-weight: bold;
+
+        }
+
+        body{
+
+            background: beige;
+
+            background-image: url(logo.jpg);
+
+            background-repeat: no-repeat;
+
+        }
+
+        table {
+
+            border: 1px red;
+
+        }
+
+ 
+
+        th,td {
+
+            padding: 5px;
+
+            text-align: center;
+
+        }
+
+        div{
+
+            width: 100px;
+
+            height: 50px;
+
+            background-color:red;
+
+            margin: 10px;
+
+            display: inline-block;
+
+        }
+
+        span{
+
+            background-color: blue;
+
+        }
+
+    </style>
+
+    <link rel="shortcut" href="logo.jpg">
+
+</head>
+
+ 
+
+<body>
+
+   <div><span>호호호</span></div>
+
+   <div></div>
+
+   <div></div><br>
+
+   <p>우리는 민족중흥에 <span>사명</span>역사적</p>
+
+   <hr border=2 color="red">
+
+    <table border="1" cellspacing=0>
+
+       <caption>board표</caption>
+
+        <tr>
+
+            <th>이름</th>
+
+            <th width=100>내용</th>
+
+            <th>조회수</th>
+
+            <th>비고</th>
+
+        </tr>
+
+        <tr>
+
+            <td>a</td>
+
+            <td>b</td>
+
+            <td>c</td>
+
+            <td>d</td>
+
+        </tr>
+
+        <tr>
+
+            <td colspan="4">다른곳으로 링크</td>            
+
+        </tr>
+
+    </table>
+
+    <form action="action1.jsp" method="get">
+
+        이름:<input type="text" name="name" /><br>
+
+        패스워드<input type="password" name="pw" /><br>
+
+        <input type="submit" value="전송" name="전송">
+
+        <br>성별: <input type="radio" name="gender" value="male">남자
+
+        <input type="radio" name="gender" value="female">여자
+
+ 
+
+    </form>
+
+</body>
+
+ 
+
+</html>
+
+
