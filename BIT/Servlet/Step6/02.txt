@@ -1,0 +1,53 @@
+SQL> spool
+currently spooling to c:\temp\db04.29.txt
+SQL> --실행계확
+SQL> --실행계획
+SQL> set autotrace on
+SP2-0618: Cannot find the Session Identifier.  Check PLUSTRACE role is enabled
+SP2-0611: Error enabling STATISTICS report
+SQL> set autotrace on select * from emp;
+SP2-0618: Cannot find the Session Identifier.  Check PLUSTRACE role is enabled
+SP2-0611: Error enabling STATISTICS report
+
+SQL> create table student(
+  2  no varchar2(10) primary key,
+  3  pw varchar2(10),
+  4  name varchar2(10),
+  5  hp varchar2(20));
+
+Table created.
+
+SQL> set timing off
+SQL> insert into student values('2211', '1234', '홍길동', '01044445555');
+
+1 row created.
+
+SQL> insert into student values('2013','3456','고길동','01077778888');
+
+1 row created.
+
+SQL> insert into student values('2043','3226','이길동','01079081234');
+
+1 row created.
+
+SQL> update student
+  2  set name ='김순철'
+  3  where no = 2043;
+
+1 row updated.
+
+SQL> select * from student;
+
+NO                   PW                   NAME                                  
+-------------------- -------------------- --------------------                  
+HP                                                                              
+----------------------------------------                                        
+2211                 1234                 홍길동                                
+01044445555                                                                     
+                                                                                
+2013                 3456                 고길동                                
+01077778888                                                                     
+                                                                                
+2043                 3226                 김순철                                
+01079081234                                                                     
+                                                                                
