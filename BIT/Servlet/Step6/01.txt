@@ -1,0 +1,41 @@
+create table board(
+bid number(3),
+bname varchar2(10),
+btitle varchar2(20),
+bcontent varchar2(40),
+bdate date
+bhit number(3),
+bGroup number(3),
+bstep number(3),
+bindent number(3));
+
+insert into board values(
+1, 'kimsuji', '가입인사', '반가워요.잘부탁해요', 
+sysdate, 0, 0, 0, 0);
+
+select * from board;
+
+commit;
+
+create sequence seq
+start with 100
+increment by 3;
+
+select seq.nextval from dual;
+
+select seq.nextval from dual;
+
+select seq.nextval from dual;
+
+select seq.nextval from dual;
+
+
+insert into board values(
+seq.nextval, 'kimsuji', '가입인사', '반가워요.잘부탁해요', 
+sysdate, 0, 0, 0, 0);
+
+select * from board;
+
+rename seq to board_seq;
+
+commit;
