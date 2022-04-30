@@ -1,0 +1,112 @@
+SQL> alter table student
+  2  add addr char(30) default 'seoul';
+
+Table altered.
+
+SQL> select * from student;
+
+NO                   PW                   NAME                                  
+-------------------- -------------------- --------------------                  
+HP                                                                              
+----------------------------------------                                        
+ADDR                                                                            
+------------------------------------------------------------                    
+2211                 1234                 홍길동                                
+01044445555                                                                     
+seoul                                                                           
+                                                                                
+2013                 3456                 고길동                                
+01077778888                                                                     
+seoul                                                                           
+
+NO                   PW                   NAME                                  
+-------------------- -------------------- --------------------                  
+HP                                                                              
+----------------------------------------                                        
+ADDR                                                                            
+------------------------------------------------------------                    
+                                                                                
+2043                 3226                 김순철                                
+01079081234                                                                     
+seoul                                                                           
+                                                                                
+
+SQL> alter table student
+  2  modify addr char(40);
+
+Table altered.
+
+SQL> alter table student
+  2  drop column addr;
+
+Table altered.
+
+SQL> alter table student
+  2  rename column hp to mobile;
+
+Table altered.
+
+SQL> select * from student;
+
+NO                   PW                   NAME                                  
+-------------------- -------------------- --------------------                  
+MOBILE                                                                          
+----------------------------------------                                        
+2211                 1234                 홍길동                                
+01044445555                                                                     
+                                                                                
+2013                 3456                 고길동                                
+01077778888                                                                     
+                                                                                
+2043                 3226                 김순철                                
+01079081234                                                                     
+                                                                                
+
+SQL> alter table student
+  2  rename column mobile to hp;
+
+Table altered.
+
+SQL> select * from student;
+
+NO                   PW                   NAME                                  
+-------------------- -------------------- --------------------                  
+HP                                                                              
+----------------------------------------                                        
+2211                 1234                 홍길동                                
+01044445555                                                                     
+                                                                                
+2013                 3456                 고길동                                
+01077778888                                                                     
+                                                                                
+2043                 3226                 김순철                                
+01079081234                                                                     
+                                                                                
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from student;
+
+NO                   PW                   NAME                                  
+-------------------- -------------------- --------------------                  
+HP                                                                              
+----------------------------------------                                        
+2211                 1234                 홍길동                                
+01044445555                                                                     
+                                                                                
+2013                 3456                 고길동                                
+01077778888                                                                     
+                                                                                
+2043                 3226                 김순철                                
+01079081234                                                                     
+                                                                                
+
+SQL> delete from student where no = 2043;
+
+1 row deleted.
+
+SQL> commit;
+
+Commit complete.
