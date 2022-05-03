@@ -1,0 +1,53 @@
+SQL> bhit number(3),
+SP2-0734: unknown command beginning "bhit numbe..." - rest of line ignored.
+SQL> bGroup number(3),
+SP2-0734: unknown command beginning "bGroup num..." - rest of line ignored.
+SQL> bstep number(3),
+SP2-0734: unknown command beginning "bstep numb..." - rest of line ignored.
+SQL> bindent number(3));
+SP2-0734: unknown command beginning "bindent nu..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 
+SQL> 
+SQL> create table board(
+  2  bid number(3),
+  3  bname varchar2(10),
+  4  btitle varchar2(20),
+  5  bcontent varchar2(40),
+  6  bdate date
+  7  bhit number(3),
+  8  bGroup number(3),
+  9  bstep number(3),
+ 10  bindent number(3));
+bhit number(3),
+*
+ERROR at line 7:
+ORA-00907: missing right parenthesis 
+
+
+SQL> 
+SQL> create table board(
+  2  bid number(3),
+  3  bname varchar2(10),
+  4  btitle varchar2(20),
+  5  bcontent varchar2(40),
+  6  bdate date;
+bdate date
+         *
+ERROR at line 6:
+ORA-00907: missing right parenthesis 
+
+
+SQL> bhit number(3),
+SP2-0734: unknown command beginning "bhit numbe..." - rest of line ignored.
+SQL> bGroup number(3),
+SP2-0734: unknown command beginning "bGroup num..." - rest of line ignored.
+SQL> bstep number(3),
+SP2-0734: unknown command beginning "bstep numb..." - rest of line ignored.
+SQL> bindent number(3));
+SP2-0734: unknown command beginning "bindent nu..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 
+SQL> exit
