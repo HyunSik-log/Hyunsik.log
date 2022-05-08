@@ -1,5 +1,7 @@
 package tel;
 
+import java.io.IOException;
+
 import tel.lib.*;
 
 public class App {
@@ -16,7 +18,7 @@ public class App {
 
 	private TelControl acon = TelControl.GetInstance();
 
-	public void Run() {
+	public void Run() throws IOException {
 		while(true) {
 			acon.PrintAll();
 			Menu();
@@ -27,7 +29,9 @@ public class App {
 			case '3': acon.SelectTel();				break;
 			case '4': acon.UpdateTel();				break;
 			case '5': acon.DeleteTel();				break;
-			case '6': return;
+			case '6': acon.SaveTel(); 				break;
+			case '7': acon.LoadTel(); 				break;
+			case '8': return;
 			}
 		}
 	}
@@ -38,12 +42,14 @@ public class App {
 	
 	private void Menu() {
 		System.out.println("---------전화번호부 관리---------");
-		System.out.println(" 1. 전화번호 저장");
+		System.out.println(" 1. 전화번호 등록");
 		System.out.println(" 2. 전화번호 조회");
 		System.out.println(" 3. 전화번호 검색");
 		System.out.println(" 4. 전화번호 변경");
 		System.out.println(" 5. 전화번호 삭제");
-		System.out.println(" 6. 종료");
+		System.out.println(" 6. 전화번호 저장하기");
+		System.out.println(" 7. 전화번호 가져오기");
+		System.out.println(" 8. 종료");
 	}
 
 	private void Ending() {

@@ -2,6 +2,13 @@ package tel;
 
 import tel.data.*;
 import tel.lib.*;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TelControl {
@@ -23,7 +30,7 @@ public class TelControl {
 
 	public void PrintAll() {
 		System.out.println("------------------------------");
-		System.out.printf("[전화번호 수 : %d\n", arr.getSize());
+		System.out.printf("전화번호 수 : %d\n", arr.getSize());
 		for (int i = 0; i < arr.getSize(); i++) {
 			Tel acc = arr.getData(i);
 			System.out.printf("[%d] ", i + 1);
@@ -119,4 +126,37 @@ public class TelControl {
 			System.out.println("에러 : " + ex.getMessage());
 		}
 	}
+	
+	public void SaveTel() throws IOException {
+		FileOutputStream save = new FileOutputStream("c:/Tel.txt");
+		for(int i = 0; i < arr.getSize(); i++) {
+			Tel acc = arr.getData(i);
+			String data = acc.getName() + "," + acc.getNum() + "," + acc.getAd() + "\n";
+			save.write(data.getBytes());
+		}
+		System.out.println("데이터를 저장했습니다.");
+		save.close();
+	}
+
+	public void LoadTel() throws IOException {
+		String[] array;
+		BufferedReader load = new BufferedReader(new FileReader("c:/Tel.txt"));
+		while(true) {
+            String line = load.readLine();
+            if (line == null) break;
+            array = line.split(",");
+            for(int i = 0; i < arr.getSize(); i++) {
+            	System.out.println(line);
+            }
+
+        }
+		System.out.println("데이터를 가져왔습니다.");
+		load.close();
+	}
 }
+
+
+
+
+
+
